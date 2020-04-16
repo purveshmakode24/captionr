@@ -1,0 +1,90 @@
+	  {% extends 'base.html' %}
+	  {% load static %}
+	  {% block content %}
+      
+        <!-- Api endpoint goes here -->  <!-- connection in bundles3.js -- >
+         <!-- <input id="api-endpoint" hidden value="https://captionbot.azurewebsites.net"/> -->
+         <input id="api-endpoint" hidden value="https://?????????????????????????????"/>
+
+         <!-- Caption result -->
+         <div class="row" id="results">
+            <div class="col col-lg-6 col-lg-offset-3">
+
+               <!-- BOT-FACE -->
+               <div id="container" class="containerbot">
+                <div id="bot" class="neutral">
+                  <div id="head">
+                    <div id="left-ear">
+                      <div id="left-ear-inner"></div>
+                    </div>
+                    <div id="face">
+                      <div id="eyes">
+                        <div id="left-eye"></div>
+                        <div id="right-eye"></div>
+                      </div>
+                      <div id="mouth"></div>
+                    </div>
+                    <div id="right-ear">
+                      <div id="right-ear-inner"></div>
+                    </div>
+                  </div>
+                </div>
+              <!--   <ul id="switches">
+                  <li class="neutral" onmouseover="setStatus('')"> Neutral </li>
+                  <li class="speaking" onmouseover="setStatus('speaking')"> Speaking </li> 
+                  <li class="waiting" onmouseover="setStatus('thinking')"> Thinking </li>   
+                </ul> -->
+              </div>
+               <!-- --------------------------------------------- -->
+               
+               <div class="bot-speech">
+                  <input id="captionLabelDefault" hidden value="I can understand the content of any photograph and I’ll try to describe it as well as any human. I'll analyze your photo, but I won't store or share it." />
+                  <div id="captionLabel"></div>
+                  <div id="thumbContainer" hidden style="padding-left: 0; position: relative;">
+                     <img id="thumbnail" src="{% static 'images/placeholder.png' %}" class="img-responsive center-block" onerror="this.onerror = null; this.src = `{% static 'images/placeholder.png' %}`;" alt="Photo submitted for description" />
+                  </div>
+               </div>
+
+               <div id="tryAnother">
+                  <button id="tryAnotherButton">Try another</button>
+               </div>
+            </div>
+         </div>
+
+         <!-- upload image form -->        
+         <form id="idFileUploadForm" name="form1" method="post" enctype="multipart/form-data" action="/api/upload" style="display: none;">
+            <input id="idImageUploadField" name="image1" type="file" accept="image/*" />
+         </form>
+
+         <!-- our default test images -->
+         <div class="row" id="imagePicker">
+            <div id="imageDiv" class="ImageSelector" style="opacity: 0; ">
+               <div id="imageList" class="ScrollArea notSelectedImage">
+                  <div class="image" style="background-image:url('{% static 'images/test/241347760_d44c8d3a01.jpg' %}')" data-url="241347760_d44c8d3a01.jpg"></div>
+                  <div class="image" style="background-image:url('{% static 'images/test/1258913059_07c613f7ff.jpg' %}')" data-url="1258913059_07c613f7ff.jpg"></div>
+                  <div class="image" style="background-image:url('{% static 'images/test/2654514044_a70a6e2c21.jpg' %}')" data-url="2654514044_a70a6e2c21.jpg"></div>
+                  <div class="image" style="background-image:url('{% static 'images/upload.png' %}')" data-action="upload"></div>
+                  <div class="image" style="background-image:url('{% static 'images/test/3254817653_632e840423.jpg' %}')" data-url="3254817653_632e840423.jpg"></div>
+                  <div class="image" style="background-image:url('{% static 'images/test/3385593926_d3e9c21170.jpg' %}')" data-url="3385593926_d3e9c21170.jpg"></div>
+                  <div class="image" style="background-image:url('{% static 'images/test/3430607596_7e4f74e3ff.jpg' %}')" data-url="3430607596_7e4f74e3ff.jpg"></div>
+               </div>
+               <div id="SelectorBox"></div>
+               <div id="SelectorTag">
+                  <button id="samplePhotoSelect" type="button" class="btn btn-default">
+                  <span class="fas fa-upload" style="margin-right: 4px" aria-hidden="true"></span>
+                  <span class="text">Use this photo</span>
+                  </button>
+               </div>
+            </div>
+            <div id="imageUrl" class="row">
+               <h2>Or</h2>
+               <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+                  <div class="input-group url-group">
+                     <input type="text" id="idTextField" class="form-control" placeholder="Give me the URL to an image" />
+                     <div class="btn btn-default" type="button" id="idTextSubmitButton">Go!</div>
+                  </div>
+               </div>
+            </div>
+         </div>
+       
+    {% endblock %}

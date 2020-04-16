@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Captionr - For pictures worth the thousand words</title>
+      <link rel="icon" href="{% static 'images/upload.png' %}" type="image/gif" sizes="16x16">
+      <!-- fontawesome -->
+      <link rel="stylesheet" type="text/css" href="{% static 'css/all.css' %}">
+      <!-- --- -->
+      <link href="{% static 'css/content.css' %}" rel="stylesheet"/>
+      <script src="{% static 'js/bundles1/modernizer.js' %}"></script>
+      <script src="{% static 'js/bundles1/jquery.js' %}"></script>
+   </head>
+   <body>
+      <div id="fb-root"></div>
+      <div id="header">
+         <div id="headertext">
+            <a href="{% url 'home' %}">Captionr.ai</a>
+         </div>
+      </div>
+      <div class="container body-content">
+
+        {% block content %}
+        {% endblock %}
+
+      	 <!-- js-BUNDLES -->
+	     <script src="{% static 'js/bundles2/bundles.js' %}"></script>
+	     <script src="{% static 'js/bundles2/bundles2.js' %}"></script>
+	     <script src="{% static 'js/bundles2/bundles3.js' %}"></script>	     
+      </div>
+
+
+        <!--  footer -->
+      <div class="footer footerTranslate">
+         <div id="magicDiv">
+            <div>
+               <h3><a href="#">The Magic behind Captionr.ai</a></h3>
+            </div>
+          <!--   <div><a href="#" target="blank">Powered by PathBreaker</a></div> -->
+         </div>
+         <div id="footerDivId">
+            <a class="bodyfont link" href="#" target="_blank"><span>Privacy &amp; Cookies</span></a>
+            <label class="bodyfont" href="#"> | </label>
+            <a class="bodyfont link" href="#" target="_blank"><span>Terms of Use</span></a>
+            <label class="bodyfont" href="#"> | </label>
+           <!--  <a class="bodyfont link" href="#" target="_blank"><span>Trademark</span></a>
+            <label class="bodyfont" href="#"> | </label> -->
+            <a class="bodyfont link" href="mailto:makodepurvesh@gmail.com?Subject= Application Abuse Reporting" target="_top"><span>Report abuse</span></a>
+            <label class="bodyfont" href="#"> | </label>
+            <span class="bodyfont">&copy; PathBreaker 2020</span>
+         </div>
+      </div>
+
+      <script>
+         var localizedStrings = {}
+         
+             localizedStrings.THANKS_FEEDBACK = "Thank you for your feedback"
+             localizedStrings.PRIVACY = "Privacy \u0026 Cookies"
+             localizedStrings.MADE_OF = "What I Am Made Of"
+             localizedStrings.SIBLINGS = "My Siblings"
+             localizedStrings.UPLOAD = "Upload a photo"
+             localizedStrings.ANALYZING = "Analyzing image ..."
+             localizedStrings.HOW_DID_I_DO = "How did I do?"
+             localizedStrings.REPORT = "Report abuse"
+             localizedStrings.STORY_TEXT = "Captionr.ai is powered by machine learning technology that identifies and captions your photos. When you upload a photo, it is sent to our model-system for image analysis to return a caption. We won’t store, publish, or let other people use your images."
+             localizedStrings.USE_URL = "Give me the URL to an image"
+             localizedStrings.POWERED_BY = "Powered by PathBreaker"
+             localizedStrings.TRY_ANOTHER = "Try another"
+             localizedStrings.GO = "Go!"
+             localizedStrings.OR = "Or"
+             localizedStrings.MAGIC = "The Magic behind Captionr.ai"
+             localizedStrings.INTRO = "I can understand the content of any photograph and I’ll try to describe it as well as any human. I'll analyze your photo, but I won't store or share it."
+             localizedStrings.TERMS = "Terms of Use"
+             localizedStrings.TITLE = "Captionr - For pictures worth the thousand words"
+             localizedStrings.STORY = "My Story"
+             localizedStrings.TITLE_MAGIC = "Captionr - The Magic"
+             localizedStrings.USE_THIS = "Use this photo"
+             localizedStrings.TRADEMARK = "Trademark"
+             localizedStrings.OPTIMIZING = "Optimizing image ..."
+             localizedStrings.ALT_UPLOAD = "Photo submitted for description"
+             localizedStrings.UPLOADING = "Uploading image ..."
+             localizedStrings.UNDER_WEATHER = "I seem to be under the weather right now. Try again later :("
+      </script>
+      <script src="{% static 'js/main.js' %}"></script>
+	<!-- <script src="{% static 'js/main2.js' %}"></script> -->
+
+   </body>
+</html>
