@@ -11,7 +11,7 @@
             <div class="col col-lg-6 col-lg-offset-3">
 
                <!-- BOT-FACE -->
-               <div id="container" class="containerbot">
+              <div id="container" class="containerbot">
                 <div id="bot" class="neutral">
                   <div id="head">
                     <div id="left-ear">
@@ -22,20 +22,26 @@
                         <div id="left-eye"></div>
                         <div id="right-eye"></div>
                       </div>
-                      <div id="mouth"></div>
+                      <div id="mouth" onmouseover="setStatus('speaking')"></div>
                     </div>
                     <div id="right-ear">
                       <div id="right-ear-inner"></div>
                     </div>
                   </div>
                 </div>
-              <!--   <ul id="switches">
-                  <li class="neutral" onmouseover="setStatus('')"> Neutral </li>
-                  <li class="speaking" onmouseover="setStatus('speaking')"> Speaking </li> 
-                  <li class="waiting" onmouseover="setStatus('thinking')"> Thinking </li>   
-                </ul> -->
               </div>
-               <!-- --------------------------------------------- -->
+              <!-- custom settimeout onmousehover on #mouth -->
+              <script type="text/javascript">
+                function setStatus(newstatus) {
+                  $("#bot").addClass(newstatus);
+
+                  setTimeout(() => {
+                      $("#bot").removeClass(newstatus);
+                  }, 700);
+                }
+              </script>
+
+              <!-- --------------------------------------------- -->
                
                <div class="bot-speech">
                   <input id="captionLabelDefault" hidden value="I can understand the content of any photograph and I’ll try to describe it as well as any human. I'll analyze your photo, but I won't store or share it." />
