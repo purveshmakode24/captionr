@@ -56,11 +56,18 @@
                </div>
             </div>
          </div>
-
+ 
+  <div>
          <!-- upload image form -->        
-         <form id="idFileUploadForm" name="form1" method="post" enctype="multipart/form-data" action="/api/upload" style="display: none;">
-            <input id="idImageUploadField" name="image1" type="file" accept="image/*" />
-         </form>
+         <form method = "post" enctype="multipart/form-data">
+                 {% csrf_token %}
+                {{ form.as_p }}
+         <button type="submit">Upload</button>
+          </form>
+ 
+   {% if message %}<div>{{ message }}</div>{% endif %}
+
+  </div>          
 
          <!-- our default test images -->
          <div class="row" id="imagePicker">
