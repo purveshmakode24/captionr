@@ -5810,3 +5810,56 @@ h2{
   52%  { right: -150%; }
   100% { right: -150%; }
 }
+
+
+/* customs */
+
+#analyzeButtonDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:20px 0px 0px 0px;
+   
+}
+
+.analyzeButton {
+    background-color: #ddd;
+    border: none;
+    color: black;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition: 0.3s;
+}
+
+.analyzeButton:hover {
+    background-color: #20B2AA;
+    color: white;
+  }
+
+
+.tryAnotherNew {
+    width:50%;
+    height:50px;
+    /*background:#008272;*/
+    background: #15202B;
+    color:#fff;
+    border:none;
+    font-size:18px;
+    -ms-border-radius:0;
+    border-radius:0;
+    outline: none;
+    
+}  
+
+.tryAnotherNew a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#tryAnotherDiv {
+    margin-top: 40px;
+    text-align: center;
+    color: #fff;
+}

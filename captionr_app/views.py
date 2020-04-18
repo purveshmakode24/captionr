@@ -1,14 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import ImageForm
 from .models import  Caption_Predictor
-
-
-
-
-
-
-
-
 
 
 #RELATED TO MODEL PREDICTION
@@ -162,17 +154,7 @@ def generate_caption_beam_search(model, tokenizer, image, max_length, beam_index
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+# views
 
 def home(request):
 	return render(request, 'index.html', {})
@@ -181,7 +163,18 @@ def home(request):
 def image_view(request):
 	if request.method == 'POST':
 		form = ImageForm(request.POST, request.FILES)
+		# image = request.FILES('img')
+		# print(image)
+		# try:
+		# 	form = Caption_Predictor(img=image)
+		# 	form.save()
+		# 	obj = Caption_Predictor.objects.latest('id')
+		# 	print("hello" , obj.img )
+		# 	base_dir = settings.MEDIA_ROOT
 
+		
+		
+			
 		if form.is_valid():
 			form.save()
 			obj =Caption_Predictor.objects.latest('id')
@@ -193,8 +186,13 @@ def image_view(request):
 
 			#start = time.time()
 
+
+
+
+
+
 			# load the tokenizer
-			tokenizer = load(open( os.path.join( base_dir , 'abhinaytokenizer.pkl' ), 'rb'))
+			tokenizer = load(open( os.path.join( base_dir , 'tokenizer.pkl' ), 'rb'))
 			# pre-define the max sequence length (from training)
 			max_length = 34
 			# load the model
@@ -208,7 +206,14 @@ def image_view(request):
 			#end = time.time()
 			#print("Time taken to predict is ", end - start, " seconds ")
 
-			return render(request, 'index.html', {'form': form , 'message':description})
+			# return render(request, 'index.html', {'form': form , 'message':description})
+			return render(request, 'prediction.html', {'form:':form, 'message':description})
+
+		# except Exception as e:
+		# 	print(e)
+			
 	else:
 		form = ImageForm()
+		# return redirect('home')
+		
 	return render(request, 'index.html', {'form': form})

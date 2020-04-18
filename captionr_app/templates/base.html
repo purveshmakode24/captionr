@@ -12,8 +12,12 @@
       <link href="{% static 'css/content.css' %}" rel="stylesheet"/>
       <script src="{% static 'js/bundles1/modernizer.js' %}"></script>
       <script src="{% static 'js/bundles1/jquery.js' %}"></script>
+      {% block preloader %}
+      {% endblock %}
    </head>
    <body>
+      {% block preloaderdiv %}
+      {% endblock %}
       <div id="fb-root"></div>
       <div id="header">
          <div id="headertext">
@@ -81,7 +85,7 @@
              localizedStrings.OPTIMIZING = "Optimizing image ..."
              localizedStrings.ALT_UPLOAD = "Photo submitted for description"
              localizedStrings.UPLOADING = "Uploading image ..."
-             localizedStrings.UNDER_WEATHER = "I seem to be under the weather right now. Try again later :("
+             localizedStrings.UNDER_WEATHER = "You've Selected this Image. Click 'Analyze' to test me describe it."
       </script>
       <script src="{% static 'js/main.js' %}"></script>
 	<!-- <script src="{% static 'js/main2.js' %}"></script> -->

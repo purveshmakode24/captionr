@@ -76,7 +76,8 @@ function updateThumbnail(n, t) {
     $("#thumbnail").remove();
     n && n !== "" || (n = "images/placeholder.png");
     loadImage(n, function(n) {
-        if (n.type === "error") $("#thumbContainer").prepend('<img id="thumbnail" src="{% static `images/placeholder.png` %}" class="img-responsive center-block" />');
+        // if (n.type === "error") $("#thumbContainer").prepend('<img id="thumbnail" src="{% static `images/placeholder.png` %}" class="img-responsive center-block" />');
+        if (n.type === "error") $("#thumbContainer");
         else {
             var t = $(n);
             t.attr("id", "thumbnail");
@@ -88,6 +89,7 @@ function updateThumbnail(n, t) {
         orientation: t
     })
 }
+
 
 function uploadImage(n) {
     $("#captionLabel").text(localizedStrings.UPLOADING);
