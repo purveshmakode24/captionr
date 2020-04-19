@@ -16,7 +16,7 @@ from keras.models import Model
 from keras.models import load_model
 from django.conf import settings
 import os
-
+from gtts import gTTS 
 
 import numpy as np
 from numpy import array
@@ -45,6 +45,7 @@ from keras.applications.inception_v3 import preprocess_input
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 from keras.utils import to_categorical
+from keras import backend as K
 
 
 def extract_features(image_path):
@@ -99,7 +100,16 @@ def generate_desc(model, tokenizer, photo, max_length):
 		# stop if we predict the end of the sequence
 		if word == 'endseq':
 			break
+	in_text = in_text.replace('startseq','')
+	in_text = in_text.replace('endseq','')
 	return in_text
+
+
+
+
+
+
+
 
 
 def int_to_word(integer, tokenizer):
@@ -109,7 +119,7 @@ def int_to_word(integer, tokenizer):
 	return None
 
 
-def generate_caption_beam_search(model, tokenizer, image, max_length, beam_index=3):
+def generate_caption_beam_search(model, tokenizer, image, max_length, beam_index):
 	# in_text --> [[idx,prob]] ;prob=0 initially
 	in_text = [[tokenizer.texts_to_sequences(['startseq'])[0], 0.0]]
 	while len(in_text[0][0]) < max_length:
@@ -141,7 +151,10 @@ def generate_caption_beam_search(model, tokenizer, image, max_length, beam_index
 		else:
 			final_caption.append(word)
 	final_caption.append('endseq')
-	return ' '.join(final_caption)
+	final_caption = ' '.join(final_caption)
+	final_caption = final_caption.replace('startseq','')
+	final_caption = final_caption.replace('endseq','')
+	return final_caption
 
 #RELATED TO MODEL PREDICTION ENDS
 
@@ -192,22 +205,43 @@ def image_view(request):
 
 
 			# load the tokenizer
-			tokenizer = load(open( os.path.join( base_dir , 'tokenizer.pkl' ), 'rb'))
+
+			tokenizer = load(open( os.path.join( base_dir , 'abhinaytokenizer.pkl' ), 'rb'))
 			# pre-define the max sequence length (from training)
 			max_length = 34
 			# load the model
+			K.clear_session()
 			model = load_model( os.path.join( base_dir , 'model-ep004-loss3.418-val_loss3.717.h5' ) )
 			# load and prepare the photograph
 			photo = extract_features( os.path.join( base_dir ,str(obj.img ) ) )
 			# generate description
-			description = generate_desc(model, tokenizer, photo, max_length)
-			print(description)
+			greedy_description = generate_desc(model, tokenizer, photo, max_length)
+			beam_search3 = generate_caption_beam_search(model, tokenizer, photo,max_length,3)
+			beam_search5 =generate_caption_beam_search(model, tokenizer, photo,max_length,5)
+			beam_search7 = generate_caption_beam_search(model, tokenizer, photo,max_length,7)
+			
+			K.clear_session()
+
+			mytext = greedy_description
+  
+			# Language in which you want to convert 
+			language = 'en'
+  
+			# Passing the text and language to the engine,  
+			# here we have marked slow=False. Which tells  
+			# the module that the converted audio should  
+			# have a high speed 
+			myobj = gTTS(text=mytext, lang=language, slow=True) 
+  
+			# Saving the converted audio in a mp3 file named 
+			# welcome  
+			myobj.save( "media/latest.mp3") 
 
 			#end = time.time()
 			#print("Time taken to predict is ", end - start, " seconds ")
 
 			# return render(request, 'index.html', {'form': form , 'message':description})
-			return render(request, 'prediction.html', {'form:':form, 'message':description})
+			return render(request, 'prediction.html', {'form:':form, 'greedy_description':greedy_description,'beam_search3':beam_search3,'beam_search5':beam_search5,'beam_search7':beam_search7})
 
 		# except Exception as e:
 		# 	print(e)

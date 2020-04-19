@@ -81,11 +81,69 @@
          
          <div class="bot-speech">
             <input id="captionLabelDefault" hidden value="I can understand the content of any photograph and I’ll try to describe it as well as any human. I'll analyze your photo, but I won't store or share it." />
-            <div id="captionLabel">{% if message %}<div>{{ message }}</div>{% endif %}</div>
+            <h3 style="color:yellow;">Caption using Greedy Search </h3>
+            <div id="captionLabel">
+              <div>
+              {{ greedy_description }}
+              </div>
+            </div>
+  
             <div id="thumbContainer" hidden style="padding-left: 0; position: relative;">
                <img id="thumbnail" src="{% static 'images/placeholder.png' %}" class="img-responsive center-block" onerror="this.onerror = null; this.src = `{% static 'images/placeholder.png' %}`;" alt="Photo submitted for description" />
             </div>                 
          </div>
+
+
+
+          <div class="bot-speech">
+            <input id="captionLabelDefault" hidden value="I can understand the content of any photograph and I’ll try to describe it as well as any human. I'll analyze your photo, but I won't store or share it." />
+            <h3 style="color:yellow;" >Caption using Beam Search using K = 3 </h3>
+            <div id="captionLabel">
+              <div>
+              {{ beam_search3 }}
+              </div>
+            </div>
+  
+            <div id="thumbContainer" hidden style="padding-left: 0; position: relative;">
+               <img id="thumbnail" src="{% static 'images/placeholder.png' %}" class="img-responsive center-block" onerror="this.onerror = null; this.src = `{% static 'images/placeholder.png' %}`;" alt="Photo submitted for description" />
+            </div>                 
+         </div>
+
+
+
+
+
+          <div class="bot-speech">
+            <input id="captionLabelDefault" hidden value="I can understand the content of any photograph and I’ll try to describe it as well as any human. I'll analyze your photo, but I won't store or share it." />
+             <h3 style="color:yellow;" >Caption using Beam Search using K = 5 </h3>
+            <div id="captionLabel">
+              <div>
+              {{ beam_search5 }}
+              </div>
+            </div>
+  
+            <div id="thumbContainer" hidden style="padding-left: 0; position: relative;">
+               <img id="thumbnail" src="{% static 'images/placeholder.png' %}" class="img-responsive center-block" onerror="this.onerror = null; this.src = `{% static 'images/placeholder.png' %}`;" alt="Photo submitted for description" />
+            </div>                 
+         </div>
+
+
+
+         <div class="bot-speech">
+            <input id="captionLabelDefault" hidden value="I can understand the content of any photograph and I’ll try to describe it as well as any human. I'll analyze your photo, but I won't store or share it." />
+             <h3 style="color:yellow;">Caption using Beam Search using K = 7</h3>
+            <div id="captionLabel">
+              <div>
+              {{ beam_search7 }}
+              </div>
+            </div>
+  
+            <div id="thumbContainer" hidden style="padding-left: 0; position: relative;">
+               <img id="thumbnail" src="{% static 'images/placeholder.png' %}" class="img-responsive center-block" onerror="this.onerror = null; this.src = `{% static 'images/placeholder.png' %}`;" alt="Photo submitted for description" />
+            </div>                 
+         </div>
+
+        
 
          <div id="tryAnotherDiv">
             <a href="{% url 'home' %}"><button class="tryAnotherNew" type="button" >Try Another</button></a>
@@ -93,4 +151,22 @@
       </div>
    </div>
 
+    <div>
+         <h3>Convert the Caption Text to Speech</h3>
+             
+            <audio controls>
+    <source src="/media/latest.mp3/" type="audio/mpeg">
+</audio>
+         </div>
+
 {% endblock %}
+
+
+
+
+ 
+
+            
+
+
+            
