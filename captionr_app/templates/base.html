@@ -18,13 +18,26 @@
 </head>
 
 <body>
+
    {% block preloaderdiv %}
    {% endblock %}
    <div id="fb-root"></div>
    <div id="header">
       <div id="headertext">
          <a href="{% url 'home' %}">Captionr.ai</a>
+
+         <!-- toggle sublinks -->
+         <div id="myNav" class="overlay">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <div class="overlay-content">
+               <a href="#">ABOUT</a>
+               <a href="#">STORY</a>
+            </div>
+         </div>
+         <span class="toggle-btn" style="font-size:30px;cursor:pointer;" onclick="openNav()">&#9776; </span>
+         <!-- end toggle sublinks  -->
       </div>
+
    </div>
    <div class="container body-content">
 
@@ -90,6 +103,17 @@
       localizedStrings.UNDER_WEATHER = "You've selected this Image. Click 'Analyze Image' to test me describe it."
    </script>
    <script src="{% static 'js/main.js' %}"></script>
+
+   <!-- Toggle sublinks script -->
+   <script>
+      function openNav() {
+         document.getElementById("myNav").style.width = "100%";
+      }
+
+      function closeNav() {
+         document.getElementById("myNav").style.width = "0%";
+      }
+   </script>
 </body>
 
 </html>

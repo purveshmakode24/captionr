@@ -70,10 +70,10 @@
     <script type="text/javascript">
       function setStatus(newstatus) {
         $("#bot").addClass(newstatus);
-        if (newstatus == 'speaking') {
+        if(newstatus == 'speaking') {
           setTimeout(() => {
             $("#bot").removeClass(newstatus);
-          }, 7000);
+          }, 6000);
         }
 
       }
