@@ -5831,6 +5831,7 @@ h2{
     font-size: 16px;
     margin: 4px 2px;
     transition: 0.3s;
+    font-weight: bold;
 }
 
 .analyzeButton:hover {
@@ -5838,6 +5839,12 @@ h2{
     color: white;
   }
 
+/* .analyzeButton:not(.no-hover){
+    background-color: #20B2AA;
+    color: white;
+} */
+
+    
 
 .tryAnotherNew {
     width:50%;
@@ -5862,4 +5869,10 @@ h2{
     margin-top: 40px;
     text-align: center;
     color: #fff;
+}
+
+/*  prediction speech div */
+
+.speech-div {
+    padding: 20px;
 }

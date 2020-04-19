@@ -1,132 +1,118 @@
-	  {% extends 'base.html' %}
-     {% load static %}
-     
-	  {% block content %}
-      
-        <!-- Api endpoint goes here -->  <!-- connection in bundles3.js -- >
-         <!-- <input id="api-endpoint" hidden value="https://captionbot.azurewebsites.net"/> -->
-         <input id="api-endpoint" hidden value="https://?????????????????????????????"/>
+{% extends 'base.html' %}
+{% load static %}
 
-         <!-- Caption result -->
-         <div class="row" id="results">
-            <div class="col col-lg-6 col-lg-offset-3">
+{% block content %}
 
-               <!-- BOT-FACE -->
-              <div id="container" class="containerbot">
-                <div id="bot" class="neutral">
-                  <div id="head">
-                    <div id="left-ear">
-                      <div id="left-ear-inner"></div>
-                    </div>
-                    <div id="face">
-                      <div id="eyes">
-                        <div id="left-eye"></div>
-                        <div id="right-eye"></div>
-                      </div>
-                      <div id="mouth" onmouseover="setStatus('speaking')"></div>
-                    </div>
-                    <div id="right-ear">
-                      <div id="right-ear-inner"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- custom settimeout onmousehover on #mouth -->
-              <script type="text/javascript">
-                function setStatus(newstatus) {
-                  $("#bot").addClass(newstatus);
+<!-- Api endpoint goes here -->
+<!-- connection in bundles3.js -->
+<input id="api-endpoint" hidden value="https://?????????????????????????????" />
 
-                  setTimeout(() => {
-                      $("#bot").removeClass(newstatus);
-                  }, 700);
-                }
-              </script>
+<!-- Caption result -->
+<div class="row" id="results">
+   <div class="col col-lg-6 col-lg-offset-3">
 
-              <!-- --------------------------------------------- -->
-               
-               <div class="bot-speech">
-                  <input id="captionLabelDefault" hidden value="I can understand the content of any photograph and I’ll try to describe it as well as any human. I'll analyze your photo, but I won't store or share it." />
-                  <div id="captionLabel"></div>
-                  <div id="thumbContainer" hidden style="padding-left: 0; position: relative;">
-                     <img id="thumbnail" src="{% static 'images/placeholder.png' %}" class="img-responsive center-block" onerror="this.onerror = null; this.src = `{% static 'images/placeholder.png' %}`;" alt="Photo submitted for description" />
-
-                     <!-- <form  method="post"  name="form1" enctype="multipart/form-data" > -->
-                        <!-- {% csrf_token %} -->
-                       <!-- {{ form.as_p }} -->
-                       <!-- {{ form }} -->
-                       <!-- <input id="idImageUploadField" name="img" type="file">  
-                                         -->
-                        
-                     <!-- </form> -->
-                     <div id="analyzeButtonDiv">
-                        <button class="analyzeButton" type="submit" form="idFileUploadForm" >Analyze</button>
-                     </div>
-                     
-                     
-
-                  </div>                 
+      <!-- BOT-FACE -->
+      <div id="container" class="containerbot">
+         <div id="bot" class="neutral">
+            <div id="head">
+               <div id="left-ear">
+                  <div id="left-ear-inner"></div>
                </div>
-
-               <div id="tryAnother">
-                  <button id="tryAnotherButton">Try another</button>
+               <div id="face">
+                  <div id="eyes">
+                     <div id="left-eye"></div>
+                     <div id="right-eye"></div>
+                  </div>
+                  <div id="mouth" onmouseover="setStatus('speaking')"></div>
+               </div>
+               <div id="right-ear">
+                  <div id="right-ear-inner"></div>
                </div>
             </div>
          </div>
- 
-         <!-- <div> -->
-                  <!-- upload image form -->        
-                  <!-- <form method = "post" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        {{ form.as_p }}
-                  <button type="submit">Upload</button>
-                  </form> -->
-         <!--  
-            {% if message %}<div>{{ message }}</div>{% endif %} -->
+      </div>
+      <!-- custom settimeout onmousehover on #mouth -->
+      <script type="text/javascript">
+         function setStatus(newstatus) {
+            $("#bot").addClass(newstatus);
 
-         <!-- </div>           -->
+            setTimeout(() => {
+               $("#bot").removeClass(newstatus);
+            }, 700);
+         }
+      </script>
 
-         <!-- our default test images -->
-         <form id="idFileUploadForm" method="post" name="form1" enctype="multipart/form-data" hidden>
-               {% csrf_token %}
-               {{ form }}
-         </form>   
-         <div class="row" id="imagePicker">
-            <div id="imageDiv" class="ImageSelector" style="opacity: 0; ">
-               <div id="imageList" class="ScrollArea notSelectedImage">
-                  <!-- <div class="image" style="background-image:url('{% static 'images/test/241347760_d44c8d3a01.jpg' %}')" data-url="241347760_d44c8d3a01.jpg"></div>
+      <!-- --------------------------------------------- -->
+
+      <div class="bot-speech">
+         <input id="captionLabelDefault" hidden
+            value="I can understand the content of any photograph and I’ll try to describe it as well as any human. I'll analyze your photo, but I won't store or share it." />
+         <div id="captionLabel"></div>
+         <div id="thumbContainer" hidden style="padding-left: 0; position: relative;">
+            <!-- <img id="thumbnail" src="{% static 'images/placeholder.png' %}" class="img-responsive center-block"
+               onerror="this.onerror = null; this.src = `{% static 'images/placeholder.png' %}`;"
+               alt="Photo submitted for description" /> -->
+
+            <!-- Button for Image Analysis -->
+            <div id="analyzeButtonDiv">
+               <button id="analyze" class="analyzeButton" type="submit" form="idFileUploadForm">Analyze Image</button>
+            </div>
+
+         </div>
+      </div>
+
+      <div id="tryAnother">
+         <button id="tryAnotherButton">Try another</button>
+      </div>
+   </div>
+</div>
+
+
+<!-- ImageForm -->
+<form id="idFileUploadForm" method="post" name="form1" enctype="multipart/form-data" onsubmit="analyzing()" hidden>
+   {% csrf_token %}
+   {{ form }}
+</form>
+
+<!-- our test images -->
+<div class="row" id="imagePicker">
+   <div id="imageDiv" class="ImageSelector" style="opacity: 0; ">
+      <div id="imageList" class="ScrollArea notSelectedImage">
+         <!-- <div class="image" style="background-image:url('{% static 'images/test/241347760_d44c8d3a01.jpg' %}')" data-url="241347760_d44c8d3a01.jpg"></div>
                   <div class="image" style="background-image:url('{% static 'images/test/1258913059_07c613f7ff.jpg' %}')" data-url="1258913059_07c613f7ff.jpg"></div>
                   <div class="image" style="background-image:url('{% static 'images/test/2654514044_a70a6e2c21.jpg' %}')" data-url="2654514044_a70a6e2c21.jpg"></div> -->
-                  <div id="uploading" class="image" style="background-image:url('{% static 'images/upload.png' %}')" data-action="upload"></div>
-                  <!-- <div class="image" style="background-image:url('{% static 'images/test/3254817653_632e840423.jpg' %}')" data-url="3254817653_632e840423.jpg"></div>
+         <div id="uploading" class="image" style="background-image:url('{% static 'images/upload.png' %}')"
+            data-action="upload"></div>
+         <!-- <div class="image" style="background-image:url('{% static 'images/test/3254817653_632e840423.jpg' %}')" data-url="3254817653_632e840423.jpg"></div>
                   <div class="image" style="background-image:url('{% static 'images/test/3385593926_d3e9c21170.jpg' %}')" data-url="3385593926_d3e9c21170.jpg"></div>
                   <div class="image" style="background-image:url('{% static 'images/test/3430607596_7e4f74e3ff.jpg' %}')" data-url="3430607596_7e4f74e3ff.jpg"></div> -->
-               </div>
-               <div id="SelectorBox"></div>
-               <div id="SelectorTag">
-                  <!-- <button id="samplePhotoSelect" type="button" class="btn btn-default"> -->
-                  <button id="uploadtosubmit" type="button"><span class="fas fa-upload" style="margin-right: 4px" aria-hidden="true"></span>Upload Image</button>
-                  
-                  <!-- <span class="text">Use this photo</span> -->
-                  </button>
-               </div>
-            </div>
-     
-         </div>
+      </div>
+      <div id="SelectorBox"></div>
+      <div id="SelectorTag">
+         <!-- <button id="samplePhotoSelect" type="button" class="btn btn-default"> -->
+         <button id="uploadtosubmit" type="button"><span class="fas fa-upload" style="margin-right: 4px"
+               aria-hidden="true"></span>Upload Image</button>
 
-         <script>
-            document.getElementById('SelectorBox').onclick = function() {
-            document.getElementById('idImageUploadField').click();
-            };
+         <!-- <span class="text">Use this photo</span> -->
+      </div>
+   </div>
 
-            // document.getElementById('idImageUploadField').onclick = function(){
-            //    location.href='prediction.html'
-            // }
+</div>
 
-            document.getElementById('uploadtosubmit').onclick = function() {
-            document.getElementById('idImageUploadField').click();
-};
-               
-         </script>
+<script>
+   document.getElementById('SelectorBox').onclick = function () {
+      document.getElementById('idImageUploadField').click();
+   };
 
-      
-    {% endblock %}
+   // document.getElementById('idImageUploadField').onclick = function(){
+   //    location.href='prediction.html'
+   // }
+
+   document.getElementById('uploadtosubmit').onclick = function () {
+      document.getElementById('idImageUploadField').click();
+   };
+
+</script>
+
+
+{% endblock %}

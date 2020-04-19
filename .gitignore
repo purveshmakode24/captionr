@@ -1,4 +1,8 @@
 db.sqlite3
 myvenv
+venv
+myenv
 media
 newp3
+.vscode
+.idea

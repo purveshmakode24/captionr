@@ -2,34 +2,34 @@
 {% load static %}
 {% block preloader %}
 <style>
-    /* ---------page pre-loader -----------*/
+  /* ---------page pre-loader -----------*/
 
-    /*.no-js #loader { display: none;  }
+  /*.no-js #loader { display: none;  }
     .js #loader { display: block; position: absolute; left: 100px; top: 0; }*/
-    .pre-loader {
-        position: fixed;
-        left: 0px;
-        top: 0px;
-        width: 100%;
-        height: 100%;
-        z-index: 9999;
-        background: url({% static 'images/bot-face.png' %}) center no-repeat #fff;
-    }
+  .pre-loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url({% static 'images/bot-face.png' %}) center no-repeat #fff;
+  }
 </style>
 <!-- ------preloader script------ -->
 <script>
-    document.onreadystatechange = function () {
-        var state = document.readyState
-        if (state == 'interactive') {
-            document.getElementById('').style.visibility = "hidden";
-        } else if (state == 'complete') {
-            setTimeout(function () {
-                document.getElementById('interactive');
-                document.getElementById('load').style.visibility = "hidden";
-                // document.getElementById('contents').style.visibility="visible";
-            }, 1000);
-        }
+  document.onreadystatechange = function () {
+    var state = document.readyState
+    if (state == 'interactive') {
+      document.getElementById('').style.visibility = "hidden";
+    } else if (state == 'complete') {
+      setTimeout(function () {
+        document.getElementById('interactive');
+        document.getElementById('load').style.visibility = "hidden";
+        // document.getElementById('contents').style.visibility="visible";
+      }, 1000);
     }
+  }
 </script>
 {% endblock %}
 
@@ -42,131 +42,103 @@
 
 
 
-   <!-- Caption result -->
-   <div class="row" id="results">
-      <div class="col col-lg-6 col-lg-offset-3">
+<!-- Caption result -->
+<div class="row" id="results">
+  <div class="col col-lg-6 col-lg-offset-3">
 
-         <!-- BOT-FACE -->
-        <div id="container" class="containerbot">
-          <div id="bot" class="neutral">
-            <div id="head">
-              <div id="left-ear">
-                <div id="left-ear-inner"></div>
-              </div>
-              <div id="face">
-                <div id="eyes">
-                  <div id="left-eye"></div>
-                  <div id="right-eye"></div>
-                </div>
-                <div id="mouth" onmouseover="setStatus('speaking')"></div>
-              </div>
-              <div id="right-ear">
-                <div id="right-ear-inner"></div>
-              </div>
+    <!-- BOT-FACE -->
+    <div id="container" class="containerbot">
+      <div id="bot" class="neutral">
+        <div id="head">
+          <div id="left-ear">
+            <div id="left-ear-inner"></div>
+          </div>
+          <div id="face">
+            <div id="eyes">
+              <div id="left-eye"></div>
+              <div id="right-eye"></div>
             </div>
+            <div id="mouth" onmouseover="setStatus('speaking')"></div>
+          </div>
+          <div id="right-ear">
+            <div id="right-ear-inner"></div>
           </div>
         </div>
-        <!-- custom settimeout onmousehover on #mouth -->
-        <script type="text/javascript">
-          function setStatus(newstatus) {
-            $("#bot").addClass(newstatus);
-
-            setTimeout(() => {
-                $("#bot").removeClass(newstatus);
-            }, 700);
-          }
-        </script>
-
-        <!-- --------------------------------------------- -->
-         
-         <div class="bot-speech">
-            <input id="captionLabelDefault" hidden value="I can understand the content of any photograph and I’ll try to describe it as well as any human. I'll analyze your photo, but I won't store or share it." />
-            <h3 style="color:yellow;">Caption using Greedy Search </h3>
-            <div id="captionLabel">
-              <div>
-              {{ greedy_description }}
-              </div>
-            </div>
-  
-            <div id="thumbContainer" hidden style="padding-left: 0; position: relative;">
-               <img id="thumbnail" src="{% static 'images/placeholder.png' %}" class="img-responsive center-block" onerror="this.onerror = null; this.src = `{% static 'images/placeholder.png' %}`;" alt="Photo submitted for description" />
-            </div>                 
-         </div>
-
-
-
-          <div class="bot-speech">
-            <input id="captionLabelDefault" hidden value="I can understand the content of any photograph and I’ll try to describe it as well as any human. I'll analyze your photo, but I won't store or share it." />
-            <h3 style="color:yellow;" >Caption using Beam Search using K = 3 </h3>
-            <div id="captionLabel">
-              <div>
-              {{ beam_search3 }}
-              </div>
-            </div>
-  
-            <div id="thumbContainer" hidden style="padding-left: 0; position: relative;">
-               <img id="thumbnail" src="{% static 'images/placeholder.png' %}" class="img-responsive center-block" onerror="this.onerror = null; this.src = `{% static 'images/placeholder.png' %}`;" alt="Photo submitted for description" />
-            </div>                 
-         </div>
-
-
-
-
-
-          <div class="bot-speech">
-            <input id="captionLabelDefault" hidden value="I can understand the content of any photograph and I’ll try to describe it as well as any human. I'll analyze your photo, but I won't store or share it." />
-             <h3 style="color:yellow;" >Caption using Beam Search using K = 5 </h3>
-            <div id="captionLabel">
-              <div>
-              {{ beam_search5 }}
-              </div>
-            </div>
-  
-            <div id="thumbContainer" hidden style="padding-left: 0; position: relative;">
-               <img id="thumbnail" src="{% static 'images/placeholder.png' %}" class="img-responsive center-block" onerror="this.onerror = null; this.src = `{% static 'images/placeholder.png' %}`;" alt="Photo submitted for description" />
-            </div>                 
-         </div>
-
-
-
-         <div class="bot-speech">
-            <input id="captionLabelDefault" hidden value="I can understand the content of any photograph and I’ll try to describe it as well as any human. I'll analyze your photo, but I won't store or share it." />
-             <h3 style="color:yellow;">Caption using Beam Search using K = 7</h3>
-            <div id="captionLabel">
-              <div>
-              {{ beam_search7 }}
-              </div>
-            </div>
-  
-            <div id="thumbContainer" hidden style="padding-left: 0; position: relative;">
-               <img id="thumbnail" src="{% static 'images/placeholder.png' %}" class="img-responsive center-block" onerror="this.onerror = null; this.src = `{% static 'images/placeholder.png' %}`;" alt="Photo submitted for description" />
-            </div>                 
-         </div>
-
-        
-
-         <div id="tryAnotherDiv">
-            <a href="{% url 'home' %}"><button class="tryAnotherNew" type="button" >Try Another</button></a>
-         </div>
       </div>
-   </div>
+    </div>
+    <!-- custom settimeout onmousehover on #mouth -->
+    <script type="text/javascript">
+      function setStatus(newstatus) {
+        $("#bot").addClass(newstatus);
+        if (newstatus == 'speaking') {
+          setTimeout(() => {
+            $("#bot").removeClass(newstatus);
+          }, 7000);
+        }
 
-    <div>
-         <h3>Convert the Caption Text to Speech</h3>
-             
-            <audio controls>
-    <source src="/media/latest.mp3/" type="audio/mpeg">
-</audio>
-         </div>
+      }
+    </script>
+
+    <!-- --------------------------------------------- -->
+
+    <div class="bot-speech">
+      <div class="speech-div">
+        <h3 style="color:yellow;">Caption using Greedy Search </h3>
+        <div id="captionLabel">
+          <div>
+            {{ greedy_description }}
+          </div>
+        </div>
+      </div>
+
+
+      <div class="speech-div">
+        <h3 style="color:yellow;">Caption using Beam Search using K = 3 </h3>
+        <div id="captionLabel">
+          <div>
+            {{ beam_search3 }}
+          </div>
+        </div>
+      </div>
+
+
+      <div class="speech-div">
+        <h3 style="color:yellow;">Caption using Beam Search using K = 5 </h3>
+        <div id="captionLabel">
+          <div>
+            {{ beam_search5 }}
+          </div>
+        </div>
+      </div>
+
+      <div class="speech-div">
+        <h3 style="color:yellow;">Caption using Beam Search using K = 7</h3>
+        <div id="captionLabel">
+          <div>
+            {{ beam_search7 }}
+          </div>
+        </div>
+      </div>
+
+      <!-- text to speech -->
+      <div class="speech-div">
+        <h3>Convert the Caption Text to Speech</h3>
+        <div class="texttospeech" onmouseover="setStatus('speaking')">
+          <audio controls>
+            <source src="/media/latest.mp3/" type="audio/mpeg">
+          </audio>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div id="tryAnotherDiv">
+      <a href="{% url 'home' %}"><button class="tryAnotherNew" type="button">Try Another</button></a>
+    </div>
+  </div>
+</div>
+
+
 
 {% endblock %}
-
-
-
-
- 
-
-            
-
-
-            
