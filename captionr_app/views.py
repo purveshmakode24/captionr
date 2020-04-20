@@ -17,6 +17,7 @@ from keras.models import load_model
 from django.conf import settings
 import os
 from gtts import gTTS 
+from math import ceil
 
 import numpy as np
 from numpy import array
@@ -28,7 +29,7 @@ from PIL import Image
 import glob
 from pickle import dump, load
 
-from time import time
+import time
 from keras.preprocessing import sequence
 from keras.models import Sequential
 from keras.layers import LSTM, Embedding, TimeDistributed, Dense, RepeatVector, \
@@ -182,12 +183,13 @@ def image_view(request):
 			form.save()
 			obj =Caption_Predictor.objects.latest('id')
 			print("hello" , obj.img )
+			print("this " , obj.img.url)
 			base_dir = settings.MEDIA_ROOT
 			#my_file = os.path.join(base_dir, str(GDRAT.xls))
 
 			#code related to model processing
 
-			#start = time.time()
+			start = time.time()
 
 
 
@@ -225,11 +227,12 @@ def image_view(request):
 			# welcome  
 			myobj.save( "media/latest.mp3") 
 
-			#end = time.time()
-			#print("Time taken to predict is ", end - start, " seconds ")
+			end = time.time()
+			ttime = int( end - start) + 1
+			print("Time taken to predict is ", end - start, " seconds ")
 
 			# return render(request, 'index.html', {'form': form , 'message':description})
-			return render(request, 'prediction.html', {'form:':form, 'greedy_description':greedy_description,'beam_search3':beam_search3,'beam_search5':beam_search5,'beam_search7':beam_search7})
+			return render(request, 'prediction.html', {'form:':form, 'greedy_description':greedy_description,'beam_search3':beam_search3,'beam_search5':beam_search5,'beam_search7':beam_search7, 'obj':obj,'ttime':ttime})
 
 		
 	else:

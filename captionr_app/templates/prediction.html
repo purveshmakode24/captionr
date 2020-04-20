@@ -132,6 +132,16 @@
 
     </div>
 
+<!-- ------image code------ -->
+    <div>
+       <img src=" {{ obj.img.url }} " alt="Smiley face" >
+    </div>
+
+<!-- ------Time taken code------ -->  
+   <div>
+     <h3 style="color:blue;">Time taken is  {{ ttime }} seconds </h3>
+   </div>
+
 
     <div id="tryAnotherDiv">
       <a href="{% url 'home' %}"><button class="tryAnotherNew" type="button">Try Another</button></a>
