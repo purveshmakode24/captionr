@@ -5870,6 +5870,7 @@ h2{
     margin: 4px 2px;
     transition: 0.3s;
     font-weight: bold;
+    border-radius: 3px;
 }
 
 .analyzeButton:hover {

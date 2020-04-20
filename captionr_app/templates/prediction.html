@@ -101,7 +101,7 @@
             <div class="speech-div">
               <h3 style="text-align: center; padding-bottom: 15px;">Convert the Caption Text to Speech</h3>
               <div class="texttospeech" onmouseover="setStatus('speaking')">
-                <audio controls style="display:block; margin:auto; max-width:100%">
+                <audio controls style="display:block; margin:auto; max-width:100%; outline: none;">
                   <source src="/media/latest.mp3/" type="audio/mpeg">
                 </audio>
               </div>
@@ -165,7 +165,7 @@
 
 
     <div id="tryAnotherDiv">
-      <a href="{% url 'home' %}"><button class="tryAnotherNew" type="button">Try Another</button></a>
+      <a href="{% url 'home' %}"><button class="tryAnotherNew" type="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Try Another</button></a>
     </div>
   </div>
 </div>
