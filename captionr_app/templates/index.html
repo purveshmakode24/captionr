@@ -5,7 +5,7 @@
 
 <!-- Api endpoint goes here -->
 <!-- connection in bundles3.js -->
-<input id="api-endpoint" hidden value="https://?????????????????????????????" />
+<input id="api-endpoint" hidden value="#" />
 
 <!-- Caption result -->
 <div class="row" id="results">
@@ -49,9 +49,6 @@
             value="I can understand the content of any photograph and I’ll try to describe it as well as any human. I'll analyze your photo, but I won't store or share it." />
          <div id="captionLabel"></div>
          <div id="thumbContainer" hidden style="padding-left: 0; position: relative;">
-            <!-- <img id="thumbnail" src="{% static 'images/placeholder.png' %}" class="img-responsive center-block"
-               onerror="this.onerror = null; this.src = `{% static 'images/placeholder.png' %}`;"
-               alt="Photo submitted for description" /> -->
 
             <!-- Button for Image Analysis -->
             <div id="analyzeButtonDiv">
@@ -61,12 +58,9 @@
          </div>
       </div>
 
-      <!-- <div id="tryAnother">
-         <button id="tryAnotherButton">Try another</button>
-      </div> -->
       <div id="tryAnother">
          <a href="{% url 'home' %}"><button class="tryAnotherNew" type="button">Try Another</button></a>
-       </div>
+      </div>
    </div>
 </div>
 
@@ -114,7 +108,6 @@
    document.getElementById('uploadtosubmit').onclick = function () {
       document.getElementById('idImageUploadField').click();
    };
-
 </script>
 
 

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block preloader %}
+
 <style>
   /* ---------page pre-loader -----------*/
 
@@ -41,10 +42,9 @@
 {% block content %}
 
 
-
 <!-- Caption result -->
 <div class="row" id="results">
-  <div class="col col-lg-6 col-lg-offset-3">
+  <div class="col col-lg-6-new col-lg-offset-3-new">
 
     <!-- BOT-FACE -->
     <div id="container" class="containerbot">
@@ -70,7 +70,7 @@
     <script type="text/javascript">
       function setStatus(newstatus) {
         $("#bot").addClass(newstatus);
-        if(newstatus == 'speaking') {
+        if (newstatus == 'speaking') {
           setTimeout(() => {
             $("#bot").removeClass(newstatus);
           }, 6000);
@@ -82,65 +82,86 @@
     <!-- --------------------------------------------- -->
 
     <div class="bot-speech">
-      <div class="speech-div">
-        <h3 style="color:yellow;">Caption using Greedy Search </h3>
-        <div id="captionLabel">
-          <div>
-            {{ greedy_description }}
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+
+
+            <!-- ------image code------ -->
+            <div class="speech-div" id="thumbnail">
+              <img src=" {{ obj.img.url }} " alt="Smiley face" style="max-width: 100%; display:block; margin:auto;">
+            </div>
+
+            <!-- ------Time taken code------ -->
+            <div class="speech-div">
+              <h4 style="color:blue; text-align: center;">Time taken to predict is {{ ttime }} seconds </h4>
+            </div>
+
+            <!-- text to speech -->
+            <div class="speech-div">
+              <h3 style="text-align: center; padding-bottom: 15px;">Convert the Caption Text to Speech</h3>
+              <div class="texttospeech" onmouseover="setStatus('speaking')">
+                <audio controls style="display:block; margin:auto; max-width:100%">
+                  <source src="/media/latest.mp3/" type="audio/mpeg">
+                </audio>
+              </div>
+            </div>
+
+
+
+          </div>
+          <div class="col-md-6">
+
+
+            <div class="speech-div">
+              <h3 style="color:yellow;">Caption using Greedy Search </h3>
+              <div id="captionLabel">
+                <div>
+                  {{ greedy_description }}
+                </div>
+              </div>
+            </div>
+
+
+            <div class="speech-div">
+              <h3 style="color:yellow;">Caption using Beam Search using K = 3 </h3>
+              <div id="captionLabel">
+                <div>
+                  {{ beam_search3 }}
+                </div>
+              </div>
+            </div>
+
+
+            <div class="speech-div">
+              <h3 style="color:yellow;">Caption using Beam Search using K = 5 </h3>
+              <div id="captionLabel">
+                <div>
+                  {{ beam_search5 }}
+                </div>
+              </div>
+            </div>
+
+            <div class="speech-div">
+              <h3 style="color:yellow;">Caption using Beam Search using K = 7</h3>
+              <div id="captionLabel">
+                <div>
+                  {{ beam_search7 }}
+                </div>
+              </div>
+            </div>
+
+
           </div>
         </div>
       </div>
 
-
-      <div class="speech-div">
-        <h3 style="color:yellow;">Caption using Beam Search using K = 3 </h3>
-        <div id="captionLabel">
-          <div>
-            {{ beam_search3 }}
-          </div>
-        </div>
-      </div>
-
-
-      <div class="speech-div">
-        <h3 style="color:yellow;">Caption using Beam Search using K = 5 </h3>
-        <div id="captionLabel">
-          <div>
-            {{ beam_search5 }}
-          </div>
-        </div>
-      </div>
-
-      <div class="speech-div">
-        <h3 style="color:yellow;">Caption using Beam Search using K = 7</h3>
-        <div id="captionLabel">
-          <div>
-            {{ beam_search7 }}
-          </div>
-        </div>
-      </div>
-
-      <!-- text to speech -->
-      <div class="speech-div">
-        <h3>Convert the Caption Text to Speech</h3>
-        <div class="texttospeech" onmouseover="setStatus('speaking')">
-          <audio controls>
-            <source src="/media/latest.mp3/" type="audio/mpeg">
-          </audio>
-        </div>
-      </div>
 
     </div>
 
-<!-- ------image code------ -->
-    <div>
-       <img src=" {{ obj.img.url }} " alt="Smiley face" >
-    </div>
 
-<!-- ------Time taken code------ -->  
-   <div>
-     <h3 style="color:blue;">Time taken is  {{ ttime }} seconds </h3>
-   </div>
+
+
 
 
     <div id="tryAnotherDiv">

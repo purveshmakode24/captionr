@@ -1,4 +1,4 @@
-//Customs-------->
+//------Customs-------->
 
 // loading button
 function analyzing() {
