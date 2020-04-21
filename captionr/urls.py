@@ -28,6 +28,10 @@ urlpatterns = [
     path('', include('captionr_app.urls')),
 ]
 
+
+## Don't uncomment the below code, It causes error.------Note  
+
+
 # if settings.DEBUG:
 #     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # else:
