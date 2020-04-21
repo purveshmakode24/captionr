@@ -36,4 +36,6 @@ tensorflow==1.8.0
 termcolor==1.1.0
 urllib3==1.25.9
 Werkzeug==1.0.1
-django-heroku
+django-heroku==0.3.1
+gunicorn==19.9.0
+whitenoise==4.1.3
