@@ -4863,8 +4863,7 @@ h2{
     margin-left:0;
     margin-right:0;
     opacity:.4;
-    filter:alpha(opacity=40);
-    margin-top: -20px;   /*  custom added by purvesh */
+    filter:alpha(opacity=40)
 }
 .ImageSelector .ScrollArea .image.chooseYourImage{
     background-color:#ccc
@@ -4874,8 +4873,7 @@ h2{
     border-width:20px 20px 0 20px;
     width:290px;
     height:270px;
-    /* margin-top:-395px; */
-    margin-top: -415px; 
+    margin-top:-395px;
     margin-left:-20px;
     margin-Right:auto;
     position:relative;
