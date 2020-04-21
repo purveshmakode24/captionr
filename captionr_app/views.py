@@ -240,3 +240,18 @@ def image_view(request):
 		# return redirect('home')
 		
 	return render(request, 'index.html', {'form': form})
+
+def error_404(request, exception):
+    data = {
+		'error_title': "Error 404",
+		'error_description': "We Couldn't Find what you are looking for!"
+		}
+    return render(request,'errors.html', data)
+
+def error_500(request):
+    data = {
+		'error_title': "Error 500",
+		'error_description': "* Could not reach our servers to perform the test. You may not be connected to the internet"
+		}
+    return render(request,'errors.html', data)
+ 

@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Api endpoint goes here -->
+<!-- connection in bundles3.js -->
+<!-- <input id="api-endpoint" hidden value="#" /> -->
+
+<!-- Caption result -->
+<div class="row" id="results">
+   <div class="col col-lg-6 col-lg-offset-3">
+
+      <!-- BOT-FACE -->
+      <div id="container" class="containerbot">
+         <div id="bot" class="neutral">
+            <div id="head">
+               <div id="left-ear">
+                  <div id="left-ear-inner"></div>
+               </div>
+               <div id="face">
+                  <div id="eyes">
+                     <div id="left-eye"></div>
+                     <div id="right-eye"></div>
+                  </div>
+                  <div id="mouth" onmouseover="setStatus('speaking')"></div>
+               </div>
+               <div id="right-ear">
+                  <div id="right-ear-inner"></div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- custom settimeout onmousehover on #mouth -->
+      <script type="text/javascript">
+         function setStatus(newstatus) {
+            $("#bot").addClass(newstatus);
+
+            setTimeout(() => {
+               $("#bot").removeClass(newstatus);
+            }, 700);
+         }
+      </script>
+
+      <!-- --------------------------------------------- -->
+
+      <div class="bot-speech">
+
+         <div style="padding: 15px">
+            <span style="font-size: 30px;">{{ error_title }}</span><br>
+            <p style="padding-top: 10px"> {{ error_description }}</p>
+         </div>
+
+      </div>
+
+      <div id="tryAnother">
+         <a href="{% url 'home' %}"><button class="tryAnotherNew" type="button"><i class="fa fa-arrow-left"
+                  aria-hidden="true"></i> Try Another</button></a>
+      </div>
+   </div>
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}

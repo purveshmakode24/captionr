@@ -18,6 +18,11 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+handler404 = 'captionr_app.views.error_404'
+handler500 = 'captionr_app.views.error_500'
+# handler403 = 'captionr_app.views.error_403'
+# handler400 = 'captionr_app.views.error_400'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('captionr_app.urls')),
