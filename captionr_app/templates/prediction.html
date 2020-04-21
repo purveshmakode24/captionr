@@ -1,0 +1,179 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block preloader %}
+
+<style>
+  /* ---------page pre-loader -----------*/
+
+  /*.no-js #loader { display: none;  }
+    .js #loader { display: block; position: absolute; left: 100px; top: 0; }*/
+  .pre-loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url({% static 'images/bot-face.png' %}) center no-repeat #fff;
+  }
+</style>
+<!-- ------preloader script------ -->
+<script>
+  document.onreadystatechange = function () {
+    var state = document.readyState
+    if (state == 'interactive') {
+      document.getElementById('').style.visibility = "hidden";
+    } else if (state == 'complete') {
+      setTimeout(function () {
+        document.getElementById('interactive');
+        document.getElementById('load').style.visibility = "hidden";
+        // document.getElementById('contents').style.visibility="visible";
+      }, 1000);
+    }
+  }
+</script>
+{% endblock %}
+
+{% block preloaderdiv %}
+<!-- preloader -->
+<div class="pre-loader" id="load"></div>
+{% endblock %}
+
+{% block content %}
+
+
+<!-- Caption result -->
+<div class="row" id="results">
+  <div class="col col-lg-6-new col-lg-offset-3-new">
+
+    <!-- BOT-FACE -->
+    <div id="container" class="containerbot">
+      <div id="bot" class="neutral">
+        <div id="head">
+          <div id="left-ear">
+            <div id="left-ear-inner"></div>
+          </div>
+          <div id="face">
+            <div id="eyes">
+              <div id="left-eye"></div>
+              <div id="right-eye"></div>
+            </div>
+            <div id="mouth" onmouseover="setStatus('speaking')"></div>
+          </div>
+          <div id="right-ear">
+            <div id="right-ear-inner"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- custom settimeout onmousehover on #mouth -->
+    <script type="text/javascript">
+      function setStatus(newstatus) {
+        $("#bot").addClass(newstatus);
+        if (newstatus == 'speaking') {
+          setTimeout(() => {
+            $("#bot").removeClass(newstatus);
+          }, 6000);
+        }
+
+      }
+    </script>
+
+    <!-- --------------------------------------------- -->
+
+    <div class="bot-speech">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+
+
+            <!-- ------image code------ -->
+            <div class="speech-div" id="thumbnail">
+              <img src=" {{ obj.img.url }} " alt="Smiley face" style="max-width: 100%; display:block; margin:auto;">
+            </div>
+
+            <!-- ------Time taken code------ -->
+            <div class="speech-div">
+              <h4 style="color:blue; text-align: center;">Time taken to predict is {{ ttime }} seconds </h4>
+            </div>
+
+            <!-- text to speech -->
+            <div class="speech-div">
+              <h3 style="text-align: center; padding-bottom: 15px;">Convert the Caption Text to Speech</h3>
+              <div class="texttospeech" onmouseover="setStatus('speaking')">
+                <audio controls style="display:block; margin:auto; max-width:100%; outline: none;">
+                  <source src="/media/latest.mp3/" type="audio/mpeg">
+                </audio>
+              </div>
+            </div>
+
+
+
+          </div>
+          <div class="col-md-6">
+
+
+            <div class="speech-div">
+              <h3 style="color:yellow;">Caption using Greedy Search </h3>
+              <div id="captionLabel">
+                <div>
+                  {{ greedy_description }}
+                </div>
+              </div>
+            </div>
+
+
+            <div class="speech-div">
+              <h3 style="color:yellow;">Caption using Beam Search using K = 3 </h3>
+              <div id="captionLabel">
+                <div>
+                  {{ beam_search3 }}
+                </div>
+              </div>
+            </div>
+
+
+            <div class="speech-div">
+              <h3 style="color:yellow;">Caption using Beam Search using K = 5 </h3>
+              <div id="captionLabel">
+                <div>
+                  {{ beam_search5 }}
+                </div>
+              </div>
+            </div>
+
+            <div class="speech-div">
+              <h3 style="color:yellow;">Caption using Beam Search using K = 7</h3>
+              <div id="captionLabel">
+                <div>
+                  {{ beam_search7 }}
+                </div>
+              </div>
+            </div>
+
+            <div class="note-result">
+              <h6 style="color: yellow;">*K : Width of a Beam</h6>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+
+
+
+
+    <div id="tryAnotherDiv">
+      <a href="{% url 'home' %}"><button class="tryAnotherNew" type="button"><i class="fa fa-arrow-left"
+            aria-hidden="true"></i> Try Another</button></a>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

@@ -4,5 +4,5 @@ from captionr_app import views
 
 urlpatterns = [
     path('', image_view, name = 'home'),
-    #path('', views.home, name='home'),
+    # path('', home, name='home'),
 ]
