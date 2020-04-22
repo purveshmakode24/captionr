@@ -1,4 +1,4 @@
-import django_heroku
+# import django_heroku
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -14,7 +14,7 @@ SECRET_KEY = '!aoexjnpa7%t#5l=!!2xcf)sly!@yicw2m^&0f*qhl4t(q7=ww'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['icaptionr.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['icaptionr.pythonanywhere.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -113,4 +113,4 @@ STATIC_URL = '/static/'
 MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
