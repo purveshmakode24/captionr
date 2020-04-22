@@ -4966,13 +4966,41 @@ h2{
 .magicItem figcaption{
     margin-top:10px
 }
-@media(max-width:480px),(max-height:480px){
-    .footerTranslate{
-        position:relative;
+/* @media(max-width:480px),(max-height:480px){ */
+    /* .footerTranslate{ */
+        /* position:relative; */
         /* top:-200px */
-        top: -40px;   /* to mke footer mobile responsive */
+      /* 
+           
+    }
+}*/
+
+ @media(max-width:480px){
+     .footerTranslate{
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        padding: 20px;
+        font-size: 12px;
+     }
+ }
+
+ @media(max-height:700px){
+    .footerTranslate{
+       position: relative;
+       /* top:-200px; */
+       right: 0;
+       bottom: 0;
+       left: 0;
+       margin-bottom: 0px;
     }
 }
+
+
+
+
+
 .bot-speech a{
     color:#fff;
     text-decoration:underline
