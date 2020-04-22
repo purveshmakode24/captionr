@@ -4930,6 +4930,8 @@ h2{
     margin-top:40px;
     text-align:center
 }
+
+
 #magicDiv{
     margin-top:40px;
     text-align:center
@@ -4967,7 +4969,8 @@ h2{
 @media(max-width:480px),(max-height:480px){
     .footerTranslate{
         position:relative;
-        top:-200px
+        /* top:-200px */
+        top: -40px;   /* to mke footer mobile responsive */
     }
 }
 .bot-speech a{
