@@ -244,7 +244,7 @@ def image_view(request):
 def error_404(request, exception):
     data = {
 		'error_title': "Error 404",
-		'error_description': "We couldn't find what you are looking for!"
+		'error_description': "I couldn't find what you are looking for!"
 		}
     return render(request,'errors.html', data)
 
