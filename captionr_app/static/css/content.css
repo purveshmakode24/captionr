@@ -4979,6 +4979,17 @@ h2{
 
 /* -----------RESPONSIVE FOOTER ADDED------------ */
 
+/* @media(max-width:390px){
+    .footerTranslate{
+        position: relative!important;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin-bottom: 0px;
+     }
+} */
+
+
  @media(max-width:480px){
      .footerTranslate{
         position: fixed;
@@ -5000,6 +5011,7 @@ h2{
        margin-bottom: 0px;
     }
 }
+
 
 
 
