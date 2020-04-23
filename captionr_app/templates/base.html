@@ -19,7 +19,7 @@
    <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/SemanticUI/icon.min.css' %}"> -->
 
    <link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}">
- 
+
    <link href="{% static 'css/content.css' %}" rel="stylesheet" />
    <script src="{% static 'js/bundles1/modernizer.js' %}"></script>
    <script src="{% static 'js/bundles1/jquery.js' %}"></script>
@@ -66,11 +66,21 @@
    <!--  footer -->
    <div class="footer footerTranslate animated fadeInUp">
       <div id="magicDiv">
-         <!-- <div>
-            <h3><a href="#">The Magic behind iCaptionr</a></h3>
-         </div>
-           <div><a href="#" target="blank">Powered by PathBreaker</a></div> -->
-         <p>Submitted by:</p>
+
+         <p><span id="submittedby" onclick="footerToggle()" style="cursor: pointer; font-weight: 500;">Submitted by:</span>
+         </p>
+
+         <script>
+            function footerToggle() {
+               var x = document.getElementById('submittedby');
+               if (x.innerHTML === "Submitted by:") {
+                  x.innerHTML = "Made With <i class='heart icon animated infinite heartBeat'></i>  by:";
+               } else {
+                  x.innerHTML = "Submitted by:";
+               }
+            }
+         </script>
+
          <div class="ui horizontal list" bis_skin_checked="1">
             <div class="item" bis_skin_checked="1">
                <img class="ui mini circular image" src="{% static 'images/team-avatars/pur.png' %}">

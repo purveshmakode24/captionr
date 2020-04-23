@@ -5453,3 +5453,10 @@ h2{
         padding-right: 15px;
     }
   }
+
+
+  /*  footer Team  */
+
+  #submittedby:hover {
+      color: #20b2aa!important;
+  }
