@@ -4966,6 +4966,8 @@ h2{
 .magicItem figcaption{
     margin-top:10px
 }
+
+
 /* @media(max-width:480px),(max-height:480px){ */
     /* .footerTranslate{ */
         /* position:relative; */
@@ -4974,6 +4976,8 @@ h2{
            
     }
 }*/
+
+/* -----------RESPONSIVE FOOTER ADDED------------ */
 
  @media(max-width:480px){
      .footerTranslate{
@@ -4986,7 +4990,7 @@ h2{
      }
  }
 
- @media(max-height:700px){
+ @media(max-height:810px){
     .footerTranslate{
        position: relative;
        /* top:-200px; */
@@ -4999,7 +5003,7 @@ h2{
 
 
 
-
+/* ------------------------------------------------ */
 
 .bot-speech a{
     color:#fff;

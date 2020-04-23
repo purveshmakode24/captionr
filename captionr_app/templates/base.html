@@ -12,6 +12,13 @@
    <!-- fontawesome -->
    <link rel="stylesheet" type="text/css" href="{% static 'css/all.css' %}">
    <!-- --- -->
+
+   <!-- semantic framework -->
+   <link rel="stylesheet" type="text/css" href="{% static 'css/SemanticUI/semantic.min.css' %}">
+   <!-- <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/components/icon.min.css'> -->
+   <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/SemanticUI/icon.min.css' %}"> -->
+
+
    <link href="{% static 'css/content.css' %}" rel="stylesheet" />
    <script src="{% static 'js/bundles1/modernizer.js' %}"></script>
    <script src="{% static 'js/bundles1/jquery.js' %}"></script>
@@ -57,12 +64,45 @@
 
    <!--  footer -->
    <div class="footer footerTranslate">
-      <!-- <div id="magicDiv">
-         <div>
+      <div id="magicDiv">
+         <!-- <div>
             <h3><a href="#">The Magic behind iCaptionr</a></h3>
          </div>
-           <div><a href="#" target="blank">Powered by PathBreaker</a></div>
-      </div> -->
+           <div><a href="#" target="blank">Powered by PathBreaker</a></div> -->
+         <p>Submitted by:</p>
+         <div class="ui horizontal list" bis_skin_checked="1">
+            <div class="item" bis_skin_checked="1">
+               <img class="ui mini circular image" src="{% static 'images/team-avatars/pur.png' %}">
+               <div class="content" bis_skin_checked="1">
+                  <div class="ui sub header" bis_skin_checked="1">Purvesh Makode</div>
+                  BE16F06F030
+               </div>
+            </div>
+            <div class="item" bis_skin_checked="1">
+               <img class="ui mini circular image" src="{% static 'images/team-avatars/ash.png' %}">
+               <div class="content" bis_skin_checked="1">
+                  <div class="ui sub header" bis_skin_checked="1">Ashish Nimbalkar</div>
+                  BE16F06F039
+               </div>
+            </div>
+            <div class="item" bis_skin_checked="1">
+               <img src="{% static 'images/team-avatars/onk.png' %}" class="ui mini circular image">
+               <div class="content" bis_skin_checked="1">
+                  <div class="ui sub header" bis_skin_checked="1">Onkar Navekar</div>
+                  BE16F06F037
+               </div>
+            </div>
+            <div class="item" bis_skin_checked="1">
+               <img class="ui mini circular image" src="{% static 'images/team-avatars/abh.jpg' %}">
+               <div class="content" bis_skin_checked="1">
+                  <div class="ui sub header" bis_skin_checked="1">Abhinay Koreti</div>
+                  BE16F06F028
+               </div>
+            </div>
+         </div>
+
+
+      </div>
       <div id="footerDivId">
          <a class="bodyfont link" href="#" target="_blank"><span>Privacy &amp; Cookies</span></a>
          <label class="bodyfont" href="#"> | </label>
@@ -118,6 +158,13 @@
          document.getElementById("myNav").style.width = "0%";
       }
    </script>
+
+   <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous">
+      </script>
+
+   <script src="{% static 'js/semantic.min.js' %}"></script>
+
 </body>
 
 </html>
