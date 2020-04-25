@@ -1,9 +1,9 @@
 # captionr
+
 - Smart AI bot to generate captions from images.
 
-- Directory tree structure   
-
-   ├── Root
+> Directory tree structure  
+  
     ├── ...
     ├── media                  
     │   ├── your model          # Required 
@@ -11,3 +11,6 @@
     │               
     ├── ... 
     └── README.md
+
+
+  
