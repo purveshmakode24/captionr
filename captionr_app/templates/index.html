@@ -37,11 +37,14 @@
       <!-- custom settimeout onmousehover on #mouth -->
       <script type="text/javascript">
          function setStatus(newstatus) {
-            $("#bot").addClass(newstatus);
-
-            setTimeout(() => {
+            if(newstatus=='thinking'){
+               $("#bot").addClass(newstatus);
+            }else {         
+               $("#bot").addClass(newstatus);
+               setTimeout(() => {
                $("#bot").removeClass(newstatus);
             }, 700);
+            }          
          }
       </script>
 
@@ -72,7 +75,7 @@
 
 
 <!-- ImageForm -->
-<form id="idFileUploadForm" method="post" name="form1" enctype="multipart/form-data" onsubmit="analyzing()" hidden>
+<form id="idFileUploadForm" method="post" name="form1" enctype="multipart/form-data" onsubmit="analyzing() & setStatus('thinking')" hidden>
    {% csrf_token %}
    {{ form }}
 </form>
