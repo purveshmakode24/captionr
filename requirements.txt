@@ -33,7 +33,7 @@ sqlparse==0.3.1
 tensorboard==1.8.0
 tensorflow==1.15.4
 termcolor==1.1.0
-urllib3==1.25.9
+urllib3==1.26.5
 Werkzeug==1.0.1
 django-heroku==0.3.1
 gunicorn==19.9.0
